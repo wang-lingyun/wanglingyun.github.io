@@ -55,6 +55,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -547,10 +548,6 @@ h4 {
   .profile-photo {
     grid-row: auto;
     max-width: 280px;
-  }
-
-  .profile-links {
-    grid-template-columns: 1fr;
   }
 
   .interest-list {

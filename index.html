@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Lingyun Wang is a researcher and engineer working on agentic AI systems, foundation models, multimodal modeling, distributed training, and inference optimization."
+      content="Lingyun Wang is a scientist and research engineer working on agentic AI systems, foundation modeling, multimodal modeling, user and environment simulation, recommendation, large-scale distributed training, and inference optimization."
     >
-    <title>Lingyun Wang</title>
+    <title>Lingyun Wang — Agentic AI & Foundation Modeling</title>
     <link rel="stylesheet" href="styles.css">
     <script>
       // Set theme before first paint to avoid a flash of the wrong theme.
-      (function () {
+      (() => {
         try {
-          var stored = localStorage.getItem("theme");
+          const stored = localStorage.getItem("theme");
           document.documentElement.setAttribute("data-theme", stored || "light");
-        } catch (e) {}
+        } catch {}
       })();
     </script>
   </head>
@@ -30,6 +30,8 @@
           <a href="#research">Research</a>
           <a href="#talks">Talks</a>
           <a href="#blog">Blog</a>
+          <a href="#products">Products</a>
+          <a href="#patents">Patents</a>
           <a href="#education">Education</a>
         </nav>
         <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
@@ -43,6 +45,26 @@
         </button>
       </div>
     </header>
+    <script>
+      // Wire up the light/dark theme toggle (runs right after the header so the
+      // button's state syncs before the rest of the page renders).
+      (() => {
+        const btn = document.querySelector(".theme-toggle");
+        if (!btn) return;
+        const apply = (theme) => {
+          document.documentElement.setAttribute("data-theme", theme);
+          const dark = theme === "dark";
+          btn.setAttribute("aria-pressed", String(dark));
+          btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+        };
+        apply(document.documentElement.getAttribute("data-theme") || "light");
+        btn.addEventListener("click", () => {
+          const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          try { localStorage.setItem("theme", next); } catch {}
+          apply(next);
+        });
+      })();
+    </script>
 
     <main id="top" class="page-shell">
       <aside class="profile-card" aria-label="Profile summary">
@@ -53,7 +75,7 @@
         >
         <div class="profile-info">
           <h1>Lingyun Wang</h1>
-          <p>Problem-driven research engineer and scientist focused on agentic AI, foundation modeling, and inference optimization, driven by a builder's spirit to turn frontier ideas into scalable production systems.</p>
+          <p>Problem-driven scientist and research engineer focused on agentic AI, foundation modeling, and inference optimization, driven by a builder's spirit to turn frontier ideas into scalable production systems.</p>
         </div>
         <div class="profile-links icon-links" aria-label="Profile links">
           <a href="https://scholar.google.com/citations?user=efGPHGcAAAAJ&amp;hl=en" aria-label="Google Scholar" title="Google Scholar">
@@ -93,14 +115,14 @@
               Before joining Shopify, he worked in Amazon Stores Foundational AI,
               Amazon Ads, Alexa AI, Hulu, and Microsoft, contributing to foundational
               AI research and large-scale machine-learning-powered products across
-              shopping, advertising, entertainment, and conversational AI.
+              shopping, advertising, entertainment, recommendation, and conversational AI.
             </p>
           </div>
         </section>
 
         <section id="interests" class="section-block" aria-labelledby="interests-title">
           <div class="section-heading">
-            <h2 id="interests-title" class="eyebrow">Interests</h2>
+            <h2 id="interests-title">Interests</h2>
           </div>
           <ul class="interest-list">
             <li><a href="#llm-publications">LLM modeling</a></li>
@@ -114,9 +136,9 @@
 
         <section id="news" class="section-block" aria-labelledby="news-title">
           <div class="section-heading">
-            <p class="eyebrow">News</p>
-            <h2 id="news-title">News within the last quarter</h2>
+            <h2 id="news-title">News</h2>
           </div>
+          <p class="section-note">Within the last quarter.</p>
           <div class="blog-list">
             <article>
               <p class="note-meta">ICML 2026 RLxF Workshop · Paper accepted</p>
@@ -143,8 +165,7 @@
 
         <section id="research" class="section-block" aria-labelledby="research-title">
           <div class="section-heading">
-            <p class="eyebrow">Research</p>
-            <h2 id="research-title">Recent publications</h2>
+            <h2 id="research-title">Research</h2>
           </div>
           <p class="section-note">Selected publications after 2021, grouped by research area.</p>
 
@@ -221,8 +242,7 @@
 
         <section id="talks" class="section-block split-block" aria-labelledby="talks-title">
           <div class="section-heading">
-            <p class="eyebrow">Invited Talks</p>
-            <h2 id="talks-title">Speaking</h2>
+            <h2 id="talks-title">Invited Talks</h2>
           </div>
           <article class="note-card">
             <p class="note-meta">NVIDIA GTC 2024</p>
@@ -237,45 +257,50 @@
 
         <section id="blog" class="section-block" aria-labelledby="blog-title">
           <div class="section-heading">
-            <p class="eyebrow">Blog</p>
-            <h2 id="blog-title">Engineering Tech Blogs</h2>
+            <h2 id="blog-title">Blog</h2>
           </div>
+          <p class="section-note">Engineering tech blogs.</p>
           <div class="blog-list">
             <article>
-            <p>This blog shares a journey my team was deeply invested in from November 2025 to April 2026: bringing agentic modeling from an initial idea to a real product in production. It captures the lessons we learned along the way, the practical insights we gained, and the substance behind the work. I hope you find it both useful and inspiring.</p>
+              <p class="note-meta">Shopify Engineering · Nov 2025 – Apr 2026</p>
               <h3>
                 <a href="https://shopify.engineering/fine-tuning-agent-shopify-flow">Flow generation through natural language: an agentic modeling approach</a>
               </h3>
+              <p>Bringing agentic modeling from idea to production, with the lessons learned along the way.</p>
             </article>
             <article>
-              <p>This blog shares work my team has been deeply involved in since December 2025. Alongside our academic publications, it provides a more detailed engineering perspective on how SimGym was built, scaled, and applied to simulate e-commerce agent behavior in practice.</p>
+              <p class="note-meta">Shopify Engineering · Dec 2025</p>
               <h3>
                 <a href="https://shopify.engineering/simgym">2,000 robots walk into a shop...</a>
               </h3>
+              <p>An engineering deep-dive on how SimGym was built, scaled, and applied to simulate e-commerce agent behavior.</p>
             </article>
           </div>
         </section>
 
         <section id="products" class="section-block" aria-labelledby="products-title">
           <div class="section-heading">
-            <p class="eyebrow">Products</p>
-            <h2 id="products-title">Shipped products with media coverage</h2>
+            <h2 id="products-title">Products</h2>
           </div>
+          <p class="section-note">Shipped products with media coverage.</p>
           <div class="blog-list">
             <article>
-              <p class="note-meta">Shopify · Agentic Foundation Modeling</p>
+              <p class="note-meta">Shopify</p>
+              <h3>Agentic Foundation Modeling</h3>
               <p><strong>Sidekick</strong> — Shopify's AI-powered commerce assistant, helping merchants run and grow their businesses through natural-language guidance and agentic actions.</p>
               <p><strong>SimGym</strong> — a framework for user behavior simulation in e-commerce with traffic-grounded VLM agents, enabling realistic experimentation before launch.</p>
               <p>Coverage: <a href="https://www.youtube.com/watch?v=HVvbY7A7lIQ">Sidekick 2025</a> · <a href="https://x.com/tobi/status/2048198394091393284?s=20">Sidekick 2026</a> · <a href="https://shopify.engineering/simgym">SimGym</a></p>
             </article>
             <article>
-              <p class="note-meta">Amazon Rufus · Foundation Modeling and Inference Optimization</p>
-              <p>Amazon's generative AI–powered conversational shopping assistant, helping customers research products, compare options, and decide what to buy in natural language.</p>
+              <p class="note-meta">Amazon · Stores Foundational AI</p>
+              <h3>Foundation Modeling and Inference Optimization</h3>
+              <p><strong>Rufus</strong> — Amazon's generative AI–powered conversational shopping assistant, helping customers research products, compare options, and decide what to buy in natural language.</p>
               <p>Coverage: <a href="https://www.amazon.science/blog/the-technology-behind-amazons-genai-powered-shopping-assistant-rufus">Rufus Science</a> · <a href="https://www.aboutamazon.com/news/retail/how-to-use-amazon-rufus">Rufus Product</a> · <a href="https://www.aboutamazon.com/news/retail/search-image-amazon-lens-live-shopping-rufus">Rufus Multi Modal</a></p>
             </article>
             <article>
-              <p class="note-meta">Amazon · Alexa AI</p>
-              <p>Conversational AI and natural-language understanding behind Amazon Alexa, powering voice-driven assistance across hundreds of millions of devices.</p>
+              <p class="note-meta">Amazon · Alexa</p>
+              <h3>Recommendation</h3>
+              <p><strong>Alexa Brain</strong> — recommendation and personalization behind Amazon Alexa, powering skill discovery and proactive suggestions across hundreds of millions of devices.</p>
               <p>Coverage: <a href="https://developer.amazon.com/en-US/blogs/alexa/post/0fecdb38-97c9-48ac-953b-23814a469cfc/skill-discover">Amazon Alexa Developer Blog</a></p>
             </article>
           </div>
@@ -283,7 +308,6 @@
 
         <section id="patents" class="section-block" aria-labelledby="patents-title">
           <div class="section-heading">
-            <p class="eyebrow">Patents</p>
             <h2 id="patents-title">Patents</h2>
           </div>
           <div class="publication-list patent-list">
@@ -307,15 +331,14 @@
 
         <section id="education" class="section-block education-block" aria-labelledby="education-title">
           <div class="section-heading">
-            <p class="eyebrow">Education</p>
-            <h2 id="education-title">Academic background</h2>
+            <h2 id="education-title">Education</h2>
           </div>
           <div class="education-list">
             <article class="education-item">
               <p class="education-meta">2008 - 2011</p>
               <div>
                 <h3>Virginia Tech</h3>
-                <p>Master, Computer Engineering; Ph.D. dropout with Master's degree</p>
+                <p>M.S., Computer Engineering, earned in the Ph.D. program</p>
               </div>
             </article>
             <article class="education-item">
@@ -329,24 +352,5 @@
         </section>
       </div>
     </main>
-    <script>
-      // Wire up the light/dark theme toggle.
-      (function () {
-        var btn = document.querySelector(".theme-toggle");
-        if (!btn) return;
-        function apply(theme) {
-          document.documentElement.setAttribute("data-theme", theme);
-          var dark = theme === "dark";
-          btn.setAttribute("aria-pressed", String(dark));
-          btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-        }
-        apply(document.documentElement.getAttribute("data-theme") || "light");
-        btn.addEventListener("click", function () {
-          var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-          try { localStorage.setItem("theme", next); } catch (e) {}
-          apply(next);
-        });
-      })();
-    </script>
   </body>
 </html>
