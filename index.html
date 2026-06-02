@@ -14,8 +14,7 @@
       (function () {
         try {
           var stored = localStorage.getItem("theme");
-          var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-          document.documentElement.setAttribute("data-theme", stored || (prefersDark ? "dark" : "light"));
+          document.documentElement.setAttribute("data-theme", stored || "light");
         } catch (e) {}
       })();
     </script>
@@ -27,6 +26,7 @@
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#about">About</a>
           <a href="#interests">Interests</a>
+          <a href="#news">News</a>
           <a href="#research">Research</a>
           <a href="#talks">Talks</a>
           <a href="#blog">Blog</a>
@@ -85,8 +85,8 @@
         <section id="about" class="intro-section" aria-label="About Lingyun Wang">
           <div class="intro-copy">
             <p>
-              Lingyun Wang is a researcher and engineer on Shopify's Agentic Modeling
-              team, where he works on agentic AI systems that connect foundation model
+              Lingyun Wang is a researcher and engineer on Shopify's Agentic Foundation
+              Modeling team, where he works on agentic AI systems that connect foundation model
               research, scalable infrastructure, and real-world production impact.
             </p>
             <p>
@@ -110,6 +110,35 @@
             <li><a href="#talks">Large-scale distributed training</a></li>
             <li><a href="#blog">Inference optimization</a></li>
           </ul>
+        </section>
+
+        <section id="news" class="section-block" aria-labelledby="news-title">
+          <div class="section-heading">
+            <p class="eyebrow">News</p>
+            <h2 id="news-title">News within the last quarter</h2>
+          </div>
+          <div class="blog-list">
+            <article>
+              <p class="note-meta">ICML 2026 RLxF Workshop · Paper accepted</p>
+              <h3><a href="https://arxiv.org/abs/2605.16116">ShopGym accepted at the ICML 2026 RLxF Workshop</a></h3>
+              <p>
+                Our paper, <em>ShopGym: An Integrated Framework for Realistic Simulation and
+                Scalable Benchmarking of E-Commerce Web Agents</em>, has been accepted to the
+                <a href="https://sites.google.com/view/rlxf-icml2026">ICML 2026 RLxF Workshop</a>.
+              </p>
+            </article>
+            <article>
+              <p class="note-meta">NeurIPS 2026 · Workshop proposal</p>
+              <h3><a href="https://user-env-sim.github.io/">Workshop on User and Environment Simulation</a></h3>
+              <p>
+                I'm on the organizing committee — together with collaborators from top
+                universities and frontier industry labs — proposing a NeurIPS 2026 workshop
+                on user and environment simulation. We're actively recruiting speakers and
+                panelists from diverse backgrounds. If you're interested, please
+                <a href="mailto:wanglingyun9@gmail.com">reach out</a>.
+              </p>
+            </article>
+          </div>
         </section>
 
         <section id="research" class="section-block" aria-labelledby="research-title">
@@ -136,6 +165,7 @@
                     <a href="https://arxiv.org/abs/2605.16116">ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents</a>
                   </h4>
                   <p>Realistic, reproducible storefront simulation and benchmark generation for web agents.</p>
+                  <p>Code: <a href="https://github.com/agentic-foundation-modeling-research/shop-gym">GitHub</a></p>
                 </article>
                 <article>
                   <p class="publication-meta">arXiv, 2026</p>
